@@ -7,15 +7,19 @@ This is a Flask-based video chatting app that uses WebSockets to enable real-tim
 To deploy the app, you will need to have Docker installed on your machine. Follow these steps:
 
 1. Clone the repository:
+```bash
 git clone https://github.com/<your-username>/video-chat-app.git
+```
 
 2. Build the Docker image:
+```bash
 docker build -t video-chat-app .
-
+```
 
 3. Run the container:
+```bash
 docker run -p 5000:5000 video-chat-app
-
+```
 
 4. Open your browser and go to `http://localhost:5000` to access the app.
 
