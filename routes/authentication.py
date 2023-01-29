@@ -19,10 +19,10 @@ def login():
 
     # Create the JWT token
     # user_id = get_user_id(username)
-    access_token = create_token("user_id")
-
+    # access_token = create_token("user_id")
+    return jsonify({"msg": "Password works"}), 200
     # Return the token to the client
-    return jsonify(access_token=access_token), 200
+    # return jsonify(access_token=access_token), 200
 
 def authenticate(username, password):
     # Check the user's credentials against the database

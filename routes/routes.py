@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from .auth import authentication_bp
+from .authentication import authentication_bp
 
 routes_bp = Blueprint('routes', __name__)
 
