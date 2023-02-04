@@ -1,8 +1,5 @@
 from flask import request, jsonify, Blueprint
-from flask_jwt_extended import (
-    JWTManager, jwt_required, create_access_token,
-    get_jwt_identity
-)
+from auth.authentication import create_access_token, create_token, decode_token
 
 authentication_bp = Blueprint('authentication', __name__)
 
@@ -19,8 +16,8 @@ def login():
 
     # Create the JWT token
     # user_id = get_user_id(username)
-    # access_token = create_token("user_id")
-    return jsonify({"msg": "Password works"}), 200
+    access_token = create_token("username")
+    return jsonify({"msg": "Password works"}, {"access_token":access_token}, {"decoded_token":decode_token(access_token)}), 200
     # Return the token to the client
     # return jsonify(access_token=access_token), 200
 
