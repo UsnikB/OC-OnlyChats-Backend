@@ -2,3 +2,5 @@ flask
 Blueprint
 gunicorn
 flask-jwt-extended
+flask-sqlalchemy
+pymysql

@@ -3,6 +3,14 @@ from auth.authentication import create_access_token, create_token, decode_token
 
 authentication_bp = Blueprint('authentication', __name__)
 
+@authentication_bp.route('/add_user', methods=['POST'])
+def add_user():
+    username = request.json.get('username', None)
+    email = request.json.get('email', None)
+    password = request.json.get('password', None)
+
+    return jsonify({"username": username}, {"email":email}, {"password":password}), 200
+
 
 @authentication_bp.route('/login', methods=['POST'])
 def login():
@@ -17,7 +25,7 @@ def login():
     # Create the JWT token
     # user_id = get_user_id(username)
     access_token = create_token("username")
-    return jsonify({"msg": "Password works"}, {"access_token":access_token}, {"decoded_token":decode_token(access_token)}), 200
+    return jsonify({"msg": "Password works"}, {"access_token":access_token}), 200
     # Return the token to the client
     # return jsonify(access_token=access_token), 200
 
@@ -28,6 +36,5 @@ def authenticate(username, password):
         return True
     else:
         return False
-
 
 
