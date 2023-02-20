@@ -1,5 +1,4 @@
 from datetime import datetime
-from app import db
 
 class Meeting(db.Model):
     __tablename__ = 'meeting'
