@@ -1,4 +1,5 @@
 from datetime import datetime
+from database import db
 
 class Message(db.Model):
     __tablename__ = 'message'
