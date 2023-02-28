@@ -1,5 +1,7 @@
 from datetime import datetime
 from database import db
+from models.UserType import UserType
+from models.UserUserType import UserUserType
 
 class User(db.Model):
     __tablename__ = 'user'
@@ -10,11 +12,18 @@ class User(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     last_login = db.Column(db.DateTime)
 
-    def __init__(self, username, email, password):
+    def __init__(self, username, email, password, user_type="customer"):
         self.username = username
         self.email = email
         self.password = password
         db.session.add(self)
+
+        # Add user to user_user_type table with default customer type
+        user_type_id = UserType.query.filter_by(name=user_type).first().id
+        
+        user_user_type = UserUserType(user_id=self.id, user_type_id=user_type_id)
+        db.session.add(user_user_type)
+        db.session.commit()
 
     def to_dict(self):
         return {

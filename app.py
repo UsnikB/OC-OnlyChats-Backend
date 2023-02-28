@@ -4,9 +4,8 @@ from routes.authentication import authentication_bp
 from routes.users import users_bp
 from flask_jwt_extended import JWTManager
 from config import Config
-from models import  Call, CallParticipant, Meeting, MeetingParticipant, Message, Notification, Room, RoomMember, User
 from database import db
-
+from add_data import add_data
 # Created the Flask app
 app = Flask(__name__)
 
@@ -26,7 +25,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Main app
 if __name__ == '__main__':
+
     with app.app_context():
         db.init_app(app)
         db.create_all()
+        add_data()
     app.run(debug=True, host='0.0.0.0')
