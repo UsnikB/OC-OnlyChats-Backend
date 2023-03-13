@@ -36,8 +36,6 @@ def authenticate(username, password):
     user = User.query.filter_by(username=username, password=password).first()
     return user
 
-
-
 def get_user_id(username, password):
     user = User.query.filter_by(username=username, password=password).first()
     if user:

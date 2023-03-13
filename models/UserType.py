@@ -9,8 +9,6 @@ class UserType(db.Model):
         self.name = name
         db.session.add(self)
         db.session.commit()
-
-            
     
     def to_dict(self):
         return {

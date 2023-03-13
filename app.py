@@ -5,7 +5,9 @@ from routes.users import users_bp
 from flask_jwt_extended import JWTManager
 from config import Config
 from database import db
+from flask_cors import CORS
 from add_data import add_data
+
 # Created the Flask app
 app = Flask(__name__)
 
@@ -18,6 +20,8 @@ app.register_blueprint(users_bp)
 app.config["JWT_SECRET_KEY"] = Config.SECRET_KEY
 jwt = JWTManager(app)
 app.config["JWT_ALGORITHM"] = Config.JWT_ALGORITHM
+
+CORS(app)
 
 # Setting up the Database
 app.config["SQLALCHEMY_DATABASE_URI"] = Config.SQLALCHEMY_DATABASE_URI

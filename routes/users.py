@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from database import db
 from models import User
 from models import UserType
+from models import UserUserType
 from auth.authentication import if_authenticated, if_admin
 
 users_bp = Blueprint('users', __name__)
@@ -33,8 +34,9 @@ def get_user(user_id):
 def get_users():
     users = User.query.all()
     usertypes = UserType.query.all()
+    userusertypes = UserUserType.query.all()
     # return {'users': [user.to_dict() for user in users]}
-    return {'users': [user.to_dict() for user in users], 'usertypes': [usertype.to_dict() for usertype in usertypes]}
+    return {'users': [user.to_dict() for user in users], 'user_types': [usertype.to_dict() for usertype in usertypes], 'user_user_types': [userusertypes.to_dict() for userusertypes in userusertypes]}
 
 
 @users_bp.route('/users/<int:user_id>', methods=['PUT'])
