@@ -8,20 +8,16 @@ To deploy the app, you will need to have Docker installed on your machine. Follo
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/<your-username>/video-chat-app.git
+git clone git@github.com:UsnikB/OC-OnlyChats-Backend.git
 ```
 
 2. Build the Docker image:
 ```bash
-docker build -t video-chat-app .
+docker-compose up
 ```
 
-3. Run the container:
-```bash
-docker run -p 5000:5000 video-chat-app
-```
 
-4. Open your browser and go to `http://localhost:5000` to access the app.
+4. Open your browser and go to `http://localhost` to access the app.
 
 Note: If you are running on windows or mac you will have to use `http://<docker-machine-ip>:5000` to access the app.
 
